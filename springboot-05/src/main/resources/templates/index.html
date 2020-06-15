@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="bootstrap.min.css" th:href="@{bootstrap.min.css}"/>
+    <title>User Management with SpringBoot</title>
+</head>
+<body>
+<div class="container col-6">
+    <h2>User Management</h2>
+    <form th:action="@{search}">
+        <input type="text" name="name">
+        <button class="btn btn-dark">Search</button>
+    </form>
+    <table class="table table-active">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>CRUD</th>
+        </tr>
+        <tr th:each="user:${users}">
+            <td th:text="${user.name}"></td><br/>
+            <td th:text="${user.email}"></td><br/>
+            <td th:text="${user.phone}"></td><br/>
+            <td>
+                <a class="btn btn-dark" th:href="@{/edit?id={id}(id=${user.id})}">Edit</a>
+                <a class="btn btn-dark" th:href="@{/delete?id={id}(id=${user.id})}">Delete</a>
+            </td>
+        </tr>
+    </table>
+    <a href="/add" class="btn btn-success">Create new User</a>
+
+</div>
+</body>
+</html>

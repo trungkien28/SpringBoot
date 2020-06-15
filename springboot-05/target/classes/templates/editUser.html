@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="bootstrap.min.css" th:href="@{bootstrap.min.css}"/>
+    <title>User Management with SpringBoot</title>
+</head>
+<body>
+<div class="container col-6">
+    <h2>Create New User</h2>
+    <div class="col-md-auto">
+        <form th:object="${user}" th:action="@{save}" method="post">
+            <input type="hidden" th:field="*{id}">
+            <div>
+                <label th:text="Name" th:for="name"></label>
+                <input type="text" class="form-control" th:field="*{name}" placeholder="Name"/>
+            </div>
+            <div style="clear: both;display: block;height: 10px"></div>
+            <div>
+                <label th:text="Email" th:for="email"></label>
+                <input type="text" class="form-control" th:field="*{email}" placeholder="Email"/>
+            </div>
+            <div style="clear: both;display: block;height: 10px"></div>
+            <div>
+                <label th:text="Phone" th:for="phone"></label>
+                <input type="text" class="form-control" th:field="*{phone}" placeholder="Phone"/>
+            </div>
+            <div style="clear: both;display: block;height: 10px"></div>
+
+            <input type="submit" value="Save Me Data" class="btn btn-success">
+        </form>
+    </div>
+</div>
+</body>
+</html>
